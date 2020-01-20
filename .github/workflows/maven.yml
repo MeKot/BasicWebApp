@@ -18,7 +18,17 @@ jobs:
     - name: Deploy to Heroku
       env:
         HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_TOKEN }}
+        HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
         HEROKU_APP_NAME: "soft-eng-2020-ic"
       if: github.ref == 'refs/heads/master' && job.status == 'success'
-      run: git push https://heroku:$HEROKU_API_TOKEN@git.heroku.com/$HEROKU_APP_NAME.git origin/master:master
+      run: |
+        cat > ~/.netrc << EOF
+        machine api.heroku.com
+            login $HEROKU_EMAIL
+            password $HEROKU_API_TOKEN
+        machine git.heroku.com
+            login $HEROKU_EMAIL
+            password $HEROKU_API_TOKEN
+        EOF
+        git push --force https://git.heroku.com/$HEROKU_APP_NAME.git origin/master
 
