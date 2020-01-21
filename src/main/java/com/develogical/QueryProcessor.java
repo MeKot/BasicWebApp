@@ -40,6 +40,9 @@ public class QueryProcessor {
         if (query.toLowerCase().contains("what is") && query.toLowerCase().contains("plus")) {
             return Integer.toString(Integer.parseInt(query.toLowerCase().split(" ")[3]) + Integer.parseInt(query.toLowerCase().split(" ")[5]));
         }
+        if (query.toLowerCase().contains("what is") && query.toLowerCase().contains("multiplied")) {
+            Arrays.stream(extractInt(query).split(" ")).reduce((x, y) -> Integer.toString(Integer.parseInt(x) * Integer.parseInt(y))).get();
+        }
         if (query.toLowerCase().contains("shakespeare")) {
             return "William Shakespeare (26 April 1564 - 23 April 1616) was an " +
                     "English poet, playwright, and actor, widely regarded as the greatest " +
