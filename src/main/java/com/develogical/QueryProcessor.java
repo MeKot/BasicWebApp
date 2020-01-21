@@ -87,6 +87,9 @@ public class QueryProcessor {
         if (query.toLowerCase().contains("which year was Theresa May")) {
             return "2016";
         }
+        if (query.toLowerCase().contains("which city is the Eiffel tower")) {
+            return "Paris";
+        }
         if (query.toLowerCase().contains("which of the following numbers are primes")) {
             Arrays.stream(extractInt(query).split(" ")).map(x -> Integer.parseInt(x)).filter(x -> isPrime(x)).map(x -> x.toString()).reduce((x, y) -> x + " " + y);
         }
