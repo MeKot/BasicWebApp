@@ -44,6 +44,9 @@ public class QueryProcessor {
         if (query.toLowerCase().contains("what is") && query.toLowerCase().contains("multiplied")) {
             Arrays.stream(extractInt(query).split(" ")).reduce((x, y) -> Integer.toString(Integer.parseInt(x) * Integer.parseInt(y))).get();
         }
+        if (query.toLowerCase().contains("what colour is a banana") {
+            return "yellow";
+        }
         if (query.toLowerCase().contains("shakespeare")) {
             return "William Shakespeare (26 April 1564 - 23 April 1616) was an " +
                     "English poet, playwright, and actor, widely regarded as the greatest " +
