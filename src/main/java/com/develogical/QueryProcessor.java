@@ -2,6 +2,7 @@ package com.develogical;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,7 +36,7 @@ public class QueryProcessor {
         if (query.toLowerCase().contains("which of the following numbers") && query.contains("largest")) {
             List<String> ints = Arrays.asList(extractInt(query).split(" "));
             List<Integer> intss = ints.stream().map(Integer::parseInt).collect(Collectors.toList());
-            return Integer.toString(Math.max(intss.get(0), intss.get(1)));
+            return Integer.toString(Collections.max(intss));
         }
         if (query.toLowerCase().contains("what is") && query.toLowerCase().contains("plus")) {
             return Integer.toString(Integer.parseInt(query.toLowerCase().split(" ")[3]) + Integer.parseInt(query.toLowerCase().split(" ")[5]));
