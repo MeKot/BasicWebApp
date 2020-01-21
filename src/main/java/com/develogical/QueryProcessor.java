@@ -1,10 +1,41 @@
 package com.develogical;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class QueryProcessor {
+
+    // Function to return the modified string
+    static String extractInt(String str)
+    {
+        // Replacing every non-digit number
+        // with a space(" ")
+        str = str.replaceAll("[^\\d]", " ");
+
+        // Remove extra spaces from the beginning
+        // and the ending of the string
+        str = str.trim();
+
+        // Replace all the consecutive white
+        // spaces with a single space
+        str = str.replaceAll(" +", " ");
+
+        if (str.equals(""))
+            return "-1";
+
+        return str;
+    }
 
     public String process(String query) {
         if (query.toLowerCase().contains("what is your team name")) {
             return "Dynamic_Duo";
+        }
+        if (query.toLowerCase().contains("which of the following numbers") && query.contains("largest")) {
+            List<String> ints = Arrays.asList(extractInt(query).split(" "));
+            List<Integer> intss = ints.stream().map(Integer::parseInt).collect(Collectors.toList());
+            return Integer.toString(Math.max(intss.get(0), intss.get(1)));
         }
         if (query.toLowerCase().contains("shakespeare")) {
             return "William Shakespeare (26 April 1564 - 23 April 1616) was an " +
