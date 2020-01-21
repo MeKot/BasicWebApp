@@ -74,7 +74,7 @@ public class QueryProcessor {
             List<Integer> intss = ints.stream().map(Integer::parseInt).collect(Collectors.toList());
 
             for (int i : intss)
-                if (isCube(i) && Math.sqrt(i) == Math.round(Math.sqrt(i))) {
+                if (isCube(i) && (Math.sqrt(i) - Math.round(Math.sqrt(i)))  < 0.01) {
                     return Integer.toString(i);
                 }
         }
