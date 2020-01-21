@@ -29,6 +29,18 @@ public class QueryProcessor {
         return str;
     }
 
+    boolean isPrime(int num) {
+        for(int i = 2; i <= num/2; ++i)
+        {
+            // condition for nonprime number
+            if(num % i == 0)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     static boolean isCube(double input) {
         double cubeRoot = Math.cbrt(input); // get the cube root
         return Math.round(cubeRoot) == cubeRoot; // determine if number is integral
@@ -68,6 +80,12 @@ public class QueryProcessor {
         }
         if (query.toLowerCase().contains("what colour is a banana")) {
             return "yellow";
+        }
+        if (query.toLowerCase().contains("which of the following numbers are primes")) {
+            Arrays.stream(extractInt(query).split(" ")).map(x -> Integer.parseInt(x)).filter(x -> isPrime(x)).map(x -> x.toString()).reduce((x, y) -> x + " " + y);
+        }
+        if (query.toLowerCase().contains("hello")) {
+            return "hello";
         }
         if (query.toLowerCase().contains("shakespeare")) {
             return "William Shakespeare (26 April 1564 - 23 April 1616) was an " +
