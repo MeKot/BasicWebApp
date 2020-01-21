@@ -78,6 +78,9 @@ public class QueryProcessor {
         if (query.toLowerCase().contains("which of the following numbers are primes")) {
             Arrays.stream(extractInt(query).split(" ")).map(x -> Integer.parseInt(x)).filter(x -> isPrime(x)).map(x -> x.toString()).reduce((x, y) -> x + " " + y);
         }
+        if (query.toLowerCase().contains("hello")) {
+            return "hello";
+        }
         if (query.toLowerCase().contains("shakespeare")) {
             return "William Shakespeare (26 April 1564 - 23 April 1616) was an " +
                     "English poet, playwright, and actor, widely regarded as the greatest " +
