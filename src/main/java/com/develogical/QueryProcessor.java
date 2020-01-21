@@ -46,6 +46,12 @@ public class QueryProcessor {
         return Math.round(cubeRoot) == cubeRoot; // determine if number is integral
     }
 
+    static int fib(int fib) {
+        if (n <= 1)
+            return n;
+        return fib(n-1) + fib(n-2);
+    }
+
 
 
     public String process(String query) {
@@ -74,6 +80,9 @@ public class QueryProcessor {
                 if (isCube(i) && Math.sqrt(i) == Math.round(Math.sqrt(i))) {
                     return Integer.toString(i);
                 }
+        }
+        if (query.toLowerCase().contains("number in the Fibonacci")) {
+            return Integer.toString(fib(Integer.parseInt(extractInt(query).split(" ")[0])));
         }
         if (query.toLowerCase().contains("what is") && query.toLowerCase().contains("multiplied")) {
             Arrays.stream(extractInt(query).split(" ")).reduce((x, y) -> Integer.toString(Integer.parseInt(x) * Integer.parseInt(y))).get();
