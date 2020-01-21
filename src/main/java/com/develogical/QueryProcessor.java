@@ -52,6 +52,12 @@ public class QueryProcessor {
         if (query.toLowerCase().contains("what is your team name")) {
             return "Dynamic_Duo";
         }
+        if (query.contains("what is your name")) {
+            return "Dynamic_Duo";
+        }
+        if (query.contains("what is happening")) {
+            return "Competition";
+        }
         if (query.toLowerCase().contains("which of the following numbers") && query.contains("largest")) {
             List<String> ints = Arrays.asList(extractInt(query).split(" "));
             List<Integer> intss = ints.stream().map(Integer::parseInt).collect(Collectors.toList());
