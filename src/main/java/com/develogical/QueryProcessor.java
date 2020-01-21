@@ -3,7 +3,7 @@ package com.develogical;
 public class QueryProcessor {
 
     public String process(String query) {
-        if (query.toLowerCase().contains("what%20is%20your%20team%20name")) {
+        if (query.toLowerCase().contains("what is your team name")) {
             return "Dynamic_Duo";
         }
         if (query.toLowerCase().contains("shakespeare")) {
