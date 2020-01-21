@@ -37,6 +37,9 @@ public class QueryProcessor {
             List<Integer> intss = ints.stream().map(Integer::parseInt).collect(Collectors.toList());
             return Integer.toString(Math.max(intss.get(0), intss.get(1)));
         }
+        if (query.toLowerCase().contains("what is") && query.toLowerCase().contains("plus")) {
+            return Integer.toString(Integer.parseInt(query.toLowerCase().split(" ")[3]) + Integer.parseInt(query.toLowerCase().split(" ")[5]));
+        }
         if (query.toLowerCase().contains("shakespeare")) {
             return "William Shakespeare (26 April 1564 - 23 April 1616) was an " +
                     "English poet, playwright, and actor, widely regarded as the greatest " +
