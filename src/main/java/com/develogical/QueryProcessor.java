@@ -52,8 +52,6 @@ public class QueryProcessor {
         return fib(n-1) + fib(n-2);
     }
 
-
-
     public String process(String query) {
         if (query.toLowerCase().contains("what is your team name")) {
             return "Dynamic_Duo";
@@ -70,10 +68,10 @@ public class QueryProcessor {
             return Integer.toString(Collections.max(intss));
         }
         if (query.toLowerCase().contains("what is") && query.toLowerCase().contains("plus")) {
-            return Integer.toString(Integer.parseInt(query.toLowerCase().split(" ")[3]) + Integer.parseInt(query.toLowerCase().split(" ")[5]));
+            return Arrays.stream(extractInt(query).split(" ")).map(x -> Integer.parseInt(x)).reduce((x, y) -> x + y).get().toString();
         }
         if (query.toLowerCase().contains("what is") && query.toLowerCase().contains("minus")) {
-            return Integer.toString(Integer.parseInt(query.toLowerCase().split(" ")[3]) - Integer.parseInt(query.toLowerCase().split(" ")[5]));
+            return Arrays.stream(extractInt(query).split(" ")).map(x -> Integer.parseInt(x)).reduce((x, y) -> x - y).get().toString();
         }
         if (query.toLowerCase().contains("numbers") && query.toLowerCase().contains("square and a cube")) {
             List<String> ints = Arrays.asList(extractInt(query).split(" "));
