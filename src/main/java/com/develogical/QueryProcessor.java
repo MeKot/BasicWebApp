@@ -72,6 +72,9 @@ public class QueryProcessor {
         if (query.toLowerCase().contains("what is") && query.toLowerCase().contains("plus")) {
             return Integer.toString(Integer.parseInt(query.toLowerCase().split(" ")[3]) + Integer.parseInt(query.toLowerCase().split(" ")[5]));
         }
+        if (query.toLowerCase().contains("what is") && query.toLowerCase().contains("minus")) {
+            return Integer.toString(Integer.parseInt(query.toLowerCase().split(" ")[3]) - Integer.parseInt(query.toLowerCase().split(" ")[5]));
+        }
         if (query.toLowerCase().contains("numbers") && query.toLowerCase().contains("square and a cube")) {
             List<String> ints = Arrays.asList(extractInt(query).split(" "));
             List<Integer> intss = ints.stream().map(Integer::parseInt).collect(Collectors.toList());
@@ -89,6 +92,9 @@ public class QueryProcessor {
         }
         if (query.toLowerCase().contains("what colour is a banana")) {
             return "yellow";
+        }
+        if (query.toLowerCase().contains("which year was Theresa May")) {
+            return "2016";
         }
         if (query.toLowerCase().contains("which of the following numbers are primes")) {
             Arrays.stream(extractInt(query).split(" ")).map(x -> Integer.parseInt(x)).filter(x -> isPrime(x)).map(x -> x.toString()).reduce((x, y) -> x + " " + y);
