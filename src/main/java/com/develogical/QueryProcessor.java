@@ -87,6 +87,9 @@ public class QueryProcessor {
         if (query.toLowerCase().contains("hello")) {
             return "hello";
         }
+        if (query.toLowerCase().contains("when did you join imperial")) {
+            return "2016";
+        }
         if (query.toLowerCase().contains("shakespeare")) {
             return "William Shakespeare (26 April 1564 - 23 April 1616) was an " +
                     "English poet, playwright, and actor, widely regarded as the greatest " +
