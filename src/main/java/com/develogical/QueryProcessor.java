@@ -60,6 +60,9 @@ public class QueryProcessor {
         if (query.toLowerCase().contains("what is") && query.toLowerCase().contains("plus")) {
             return Integer.toString(Integer.parseInt(query.toLowerCase().split(" ")[3]) + Integer.parseInt(query.toLowerCase().split(" ")[5]));
         }
+        if (query.toLowerCase().contains("what is") && query.toLowerCase().contains("minus")) {
+            return Integer.toString(Integer.parseInt(query.toLowerCase().split(" ")[3]) - Integer.parseInt(query.toLowerCase().split(" ")[5]));
+        }
         if (query.toLowerCase().contains("numbers") && query.toLowerCase().contains("square and a cube")) {
             List<String> ints = Arrays.asList(extractInt(query).split(" "));
             List<Integer> intss = ints.stream().map(Integer::parseInt).collect(Collectors.toList());
